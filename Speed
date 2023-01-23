@@ -1,0 +1,182 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local JumpPowerWalkSpeed = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Top = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local close = Instance.new("TextButton")
+local JumpPowerChanger = Instance.new("TextBox")
+local WalkSpeedChanger = Instance.new("TextBox")
+
+--Properties:
+
+JumpPowerWalkSpeed.Name = "JumpPowerWalkSpeed"
+JumpPowerWalkSpeed.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+JumpPowerWalkSpeed.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+JumpPowerWalkSpeed.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = JumpPowerWalkSpeed
+Main.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+Main.Position = UDim2.new(0.414008319, 0, 0.424691409, 0)
+Main.Size = UDim2.new(0.171983361, 0, 0.0987654254, 0)
+
+Top.Name = "Top"
+Top.Parent = Main
+Top.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
+Top.BorderSizePixel = 0
+Top.Size = UDim2.new(1, 0, 0.231244698, 0)
+
+TextLabel.Parent = Top
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(0.92806381, 0, 1, 0)
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "JumpPower And WalkSpeed Changer by mug#1941"
+TextLabel.TextColor3 = Color3.fromRGB(74, 74, 74)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+close.Name = "close"
+close.Parent = Top
+close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+close.BackgroundTransparency = 1.000
+close.Position = UDim2.new(0.946004272, 0, 0, 0)
+close.Size = UDim2.new(0.0539956801, 0, 1, 0)
+close.Font = Enum.Font.Code
+close.Text = "X"
+close.TextColor3 = Color3.fromRGB(74, 74, 74)
+close.TextScaled = true
+close.TextSize = 14.000
+close.TextWrapped = true
+
+JumpPowerChanger.Name = "JumpPowerChanger"
+JumpPowerChanger.Parent = Main
+JumpPowerChanger.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+JumpPowerChanger.BorderColor3 = Color3.fromRGB(74, 74, 74)
+JumpPowerChanger.Position = UDim2.new(0.517852306, 0, 0.300000042, 0)
+JumpPowerChanger.Size = UDim2.new(0.453921854, 0, 0.593000054, 0)
+JumpPowerChanger.Font = Enum.Font.SourceSans
+JumpPowerChanger.PlaceholderColor3 = Color3.fromRGB(74, 74, 74)
+JumpPowerChanger.PlaceholderText = "Enter JumpPower Here"
+JumpPowerChanger.Text = ""
+JumpPowerChanger.TextColor3 = Color3.fromRGB(74, 74, 74)
+JumpPowerChanger.TextScaled = true
+JumpPowerChanger.TextSize = 14.000
+JumpPowerChanger.TextWrapped = true
+
+WalkSpeedChanger.Name = "WalkSpeedChanger"
+WalkSpeedChanger.Parent = Main
+WalkSpeedChanger.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+WalkSpeedChanger.BorderColor3 = Color3.fromRGB(74, 74, 74)
+WalkSpeedChanger.Position = UDim2.new(0.0282258056, 0, 0.300000042, 0)
+WalkSpeedChanger.Size = UDim2.new(0.462174296, 0, 0.592999995, 0)
+WalkSpeedChanger.Font = Enum.Font.SourceSans
+WalkSpeedChanger.PlaceholderColor3 = Color3.fromRGB(74, 74, 74)
+WalkSpeedChanger.PlaceholderText = "Enter WalkSpeed Here"
+WalkSpeedChanger.Text = ""
+WalkSpeedChanger.TextColor3 = Color3.fromRGB(74, 74, 74)
+WalkSpeedChanger.TextScaled = true
+WalkSpeedChanger.TextSize = 14.000
+WalkSpeedChanger.TextWrapped = true
+
+-- Scripts:
+
+local function APILW_fake_script() -- close.LocalScript 
+	local script = Instance.new('LocalScript', close)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local plr = game.Players.LocalPlayer
+		local char = plr.Character
+		local hum = char.Humanoid
+		hum.JumpPower = 50
+		hum.WalkSpeed = 16
+		local frame = script.Parent.Parent.Parent
+		frame:TweenPosition(UDim2.new(0.4, 0,1.5, 0))
+		
+		wait(1)
+		frame.Parent:Destroy()
+	end)
+end
+coroutine.wrap(APILW_fake_script)()
+local function PZHQ_fake_script() -- Main.Draggable 
+	local script = Instance.new('LocalScript', Main)
+
+	local Frame = script.Parent
+	Frame.Selectable = true
+	Frame.Active = true
+	Frame.Draggable = true
+end
+coroutine.wrap(PZHQ_fake_script)()
+local function EKIGD_fake_script() -- Main.Opening 
+	local script = Instance.new('LocalScript', Main)
+
+	script.Parent.Position = UDim2.new(0.33, 0,2, 0)
+	script.Parent:TweenPosition(UDim2.new(0.33, 0,0.3, 0))
+end
+coroutine.wrap(EKIGD_fake_script)()
+local function NRJZ_fake_script() -- Main.LocalScript 
+	local script = Instance.new('LocalScript', Main)
+
+	while on do
+		for i, v in pairs(game.Players:GetPlayers()) do
+			local target = v
+			local targetchar = v.Character
+			local targethrp = targetchar.HumanoidRootPart
+			local oldcframe = targethrp.Position
+			local plr = game.Players.LocalPlayer
+			local char = plr.Character
+			local hrp = char.HumanoidRootPart
+	
+			targethrp.Anchored = true
+			targethrp.Position = pos
+			
+	
+		end
+	end
+end
+coroutine.wrap(NRJZ_fake_script)()
+local function OALDN_fake_script() -- JumpPowerChanger.ChangeJumpPower 
+	local script = Instance.new('LocalScript', JumpPowerChanger)
+
+	script.Parent.Changed:Connect(function()
+		if tonumber(script.Parent.Text) then
+		local plr = game.Players.LocalPlayer
+		local char = plr.Character
+		local hum = char.Humanoid
+		if tonumber(script.Parent.Text) then
+			hum.JumpPower = tonumber(script.Parent.Text)
+			end
+		else
+			local plr = game.Players.LocalPlayer
+			local char = plr.Character
+			local hum = char.Humanoid
+			hum.JumpPower = 50
+		end
+	end)
+end
+coroutine.wrap(OALDN_fake_script)()
+local function OLVSJ_fake_script() -- WalkSpeedChanger.ChangeWalkSpeed 
+	local script = Instance.new('LocalScript', WalkSpeedChanger)
+
+	script.Parent.Changed:Connect(function()
+		if tonumber(script.Parent.Text) then
+			local plr = game.Players.LocalPlayer
+			local char = plr.Character
+			local hum = char.Humanoid
+			if tonumber(script.Parent.Text) then
+				hum.WalkSpeed = tonumber(script.Parent.Text)
+			end
+		else
+			local plr = game.Players.LocalPlayer
+			local char = plr.Character
+			local hum = char.Humanoid
+			hum.WalkSpeed = 16
+		end
+	end)
+end
+coroutine.wrap(OLVSJ_fake_script)()
